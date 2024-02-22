@@ -1,11 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worm Regards</title>
+    <title>Brenton's Portfolio</title>
 </head>
 <body>
-    Testing Deploy
+    <div class="navBar">
+        <ul class="menuContainer">
+            <li><a href="/gameone">Seconds 2 Die</a></li>
+            <li>
+                <a href="https://github.com/wormregards">
+                    <img class="githubLogo" src="./assets/github.svg" alt="github profile">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="gameContainer">
+        <div id="header">    
+            <div class="emscripten" id="status">Downloading...</div>
+    
+            <div class="emscripten">
+              <progress value="0" max="100" id="progress" hidden=1></progress>
+            </div>
+        </div>
+    
+        <div class="emscripten_border">
+          <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+        </div>
+    
+        <script type='text/javascript' src="https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"> </script>
+        <script type='text/javascript'>
+            function saveFileFromMEMFSToDisk(memoryFSname, localFSname)     // This can be called by C/C++ code
+            {
+                var isSafari = false; // Not supported, navigator.userAgent access is being restricted
+                //var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                var data = FS.readFile(memoryFSname);
+                var blob;
+    
+                if (isSafari) blob = new Blob([data.buffer], { type: "application/octet-stream" });
+                else blob = new Blob([data.buffer], { type: "application/octet-binary" });
+    
+                // NOTE: SaveAsDialog is a browser setting. For example, in Google Chrome,
+                // in Settings/Advanced/Downloads section you have a setting:
+                // 'Ask where to save each file before downloading' - which you can set true/false.
+                // If you enable this setting it would always ask you and bring the SaveAsDialog
+                saveAs(blob, localFSname);
+            }
+        </script>
+        <script type='text/javascript'>
+            var statusElement = document.querySelector('#status');
+            var progressElement = document.querySelector('#progress');
+            var spinnerElement = document.querySelector('#spinner');
+            var Module = {
+                preRun: [],
+                postRun: [],
+                print: (function() {
+                    var element = document.querySelector('#output');
+    
+                    if (element) element.value = '';    // Clear browser cache
+    
+                    return function(text) {
+                        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                        // These replacements are necessary if you render to raw HTML
+                        //text = text.replace(/&/g, "&amp;");
+                        //text = text.replace(/</g, "&lt;");
+                        //text = text.replace(/>/g, "&gt;");
+                        //text = text.replace('\n', '<br>', 'g');
+                        console.log(text);
+    
+                        if (element) {
+                            element.value += text + "\n";
+                            element.scrollTop = element.scrollHeight; // focus on bottom
+                        }
+                    };
+                })(),
+                printErr: function(text) {
+                    if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+    
+                    console.error(text);
+                },
+                canvas: (function() {
+                    var canvas = document.querySelector('#canvas');
+    
+                    // As a default initial behavior, pop up an alert when webgl context is lost.
+                    // To make your application robust, you may want to override this behavior before shipping!
+                    // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
+                    canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+    
+                    return canvas;
+                })(),
+                setStatus: function(text) {
+                    if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
+                    if (text === Module.setStatus.last.text) return;
+    
+                    var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+                    var now = Date.now();
+    
+                    if (m && now - Module.setStatus.last.time < 30) return; // If this is a progress update, skip it if too soon
+    
+                    Module.setStatus.last.time = now;
+                    Module.setStatus.last.text = text;
+    
+                    if (m) {
+                        text = m[1];
+                        progressElement.value = parseInt(m[2])*100;
+                        progressElement.max = parseInt(m[4])*100;
+                        progressElement.hidden = true;
+                        spinnerElement.hidden = false;
+                    } else {
+                        progressElement.value = null;
+                        progressElement.max = null;
+                        progressElement.hidden = true;
+                        // if (!text) spinnerElement.style.display = 'none';
+                    }
+    
+                    statusElement.innerHTML = text;
+                },
+                totalDependencies: 0,
+                monitorRunDependencies: function(left) {
+                    this.totalDependencies = Math.max(this.totalDependencies, left);
+                    Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+                },
+                //noInitialRun: true
+            };
+    
+            if (window.location.pathname === '/') {
+                Module.setStatus('Please select a game from the navigation menu');
+            } else {
+                Module.setStatus('Downloading...');
+            }
+    
+            window.onerror = function() {
+                Module.setStatus('Exception thrown, see JavaScript console');
+                // spinnerElement.style.display = 'none';
+                Module.setStatus = function(text) { if (text) Module.printErr('[post-exception status] ' + text); };
+            };
+        </script>
+    
+        <!-- REF: https://developers.google.com/web/updates/2018/11/web-audio-autoplay -->
+        <script type='text/javascript'>
+            var audioBtn = document.querySelector('#btn-audio');
+    
+            // An array of all contexts to resume on the page
+            const audioContexList = [];
+            (function() {
+                // A proxy object to intercept AudioContexts and
+                // add them to the array for tracking and resuming later
+                self.AudioContext = new Proxy(self.AudioContext, {
+                    construct(target, args) {
+                        const result = new target(...args);
+                        audioContexList.push(result);
+                        if (result.state == "suspended") audioBtn.value = "🔈 RESUME";
+                        return result;
+                    }
+                });
+            })();
+        </script>
+    </div>
 </body>
 </html>
