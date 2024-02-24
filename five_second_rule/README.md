@@ -1,1 +1,1 @@
-Repo for c source code ["here"](https://github.com/wormregards/fivesecondrule)
+Repo for c source code [here](https://github.com/wormregards/fivesecondrule)
