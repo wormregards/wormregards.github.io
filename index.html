@@ -4,7 +4,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css"> 
+    <style rel="stylesheet" >
+        html, body {
+    background-color: #3E3E3E;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-family: "Fira Mono", monospace;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.navBar {
+    width: 250px;
+    background-color: #2F2D2D;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 20px;
+    flex-direction: column;
+}
+
+.gameContainer {
+    background-color: #2F2D2D;
+    flex: 1;
+    margin: 2rem;
+}
+
+.menuContainer {
+    padding: 0.125rem 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuContainer li:last-child {
+     margin-top: auto;
+}
+
+.menuContainer li {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.githubLogo {
+    width: 120px;
+}
+
+#canvas {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-height: 100%;
+    justify-content: center;
+}
+
+.emscripten_border {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brenton's Portfolio</title>
@@ -12,7 +98,7 @@
 <body>
     <div class="navBar">
         <ul class="menuContainer">
-            <li><a href="/gameone">Seconds 2 Die</a></li>
+            <li><a href="/five_second_rule">5 Second Rule</a></li>
             <li>
                 <a href="https://github.com/wormregards">
                     <img class="githubLogo" src="./assets/github.svg" alt="github profile">
@@ -56,7 +142,6 @@
         <script type='text/javascript'>
             var statusElement = document.querySelector('#status');
             var progressElement = document.querySelector('#progress');
-            var spinnerElement = document.querySelector('#spinner');
             var Module = {
                 preRun: [],
                 postRun: [],
@@ -112,7 +197,6 @@
                         progressElement.value = parseInt(m[2])*100;
                         progressElement.max = parseInt(m[4])*100;
                         progressElement.hidden = true;
-                        spinnerElement.hidden = false;
                     } else {
                         progressElement.value = null;
                         progressElement.max = null;
@@ -162,6 +246,7 @@
                 });
             })();
         </script>
+        {{{ SCRIPT }}}
     </div>
 </body>
 </html>
