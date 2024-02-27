@@ -8,7 +8,7 @@ html, body {
     flex-direction: row;
     color: white;
     font-family: "Fira Mono", monospace;
-    min-width: 500px;
+    min-width: 500px;   
 }
 
 * {
@@ -24,6 +24,7 @@ li {
 a {
     text-decoration: none;
     color: white;
+    font-size: 16px;
 }
 
 a:hover {
@@ -39,6 +40,11 @@ a:hover {
     font-size: 20px;
     flex-direction: column;
     padding: 2rem;
+    border-style: solid;
+    box-sizing: border-box;
+    border-width: 0px;
+    border-right-width: 4px;
+    border-color: #494747;
 }
 
 .gameContainer {
@@ -64,6 +70,8 @@ a:hover {
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .githubLogo {
@@ -83,4 +91,93 @@ a:hover {
     align-items: center;
     width: 100%;
     justify-content: center;
+}
+
+.dropdownBtn {
+    font-family: "Fira Mono", monospace;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdownBtn:hover::after {
+    content: '';
+    border-style: solid;
+    border-width: 6px;
+    border-color: white;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 2px;
+}   
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.logoLink {
+    align-self: center;
+}
+
+.goals {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.goalsHeader {
+    font-weight: bold;
+    text-align: center;
+}
+
+.progressBackground {
+    width: 100%;
+    background: #3E4251;
+    height: 22px;
+    align-self: center;
+    border-style: solid;
+    border-color: #494747;
+    margin-top: 10px;
+    position: relative; 
+}
+
+.progressBar {
+    width: 20%;
+    height: 100%;
+    background-color: #6275D7;
+    border-style: solid;
+    border-width: 0px;
+    border-right-width: 4px;
+    box-sizing: border-box;
+    border-color: white;
+}
+
+.progressLabel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.homeLogo {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    align-self: center;
+    background: red;
+    margin-bottom: 1rem;
+    border-style: solid;
+    border-radius: 100%;
+    min-height: 100px;
+}
+
+.homePic {
+    width: 100%;
+    height: auto;
+    transform: scale(1.1);
 }
