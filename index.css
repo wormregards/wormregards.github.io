@@ -40,11 +40,7 @@ a:hover {
     font-size: 20px;
     flex-direction: column;
     padding: 2rem;
-    border-style: solid;
     box-sizing: border-box;
-    border-width: 0px;
-    border-right-width: 4px;
-    border-color: #2f2d2d;
 }
 
 .gameContainer {
