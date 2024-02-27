@@ -1,5 +1,5 @@
 html, body {
-    background-color: #3E3E3E;
+    background-color: #212121;
     margin: 0px;
     padding: 0px;
     width: 100%;
@@ -33,7 +33,7 @@ a:hover {
 
 .navBar {
     width: 250px;
-    background-color: #2F2D2D;
+    background-color: #171717;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -44,13 +44,13 @@ a:hover {
     box-sizing: border-box;
     border-width: 0px;
     border-right-width: 4px;
-    border-color: #494747;
+    border-color: #2f2d2d;
 }
 
 .gameContainer {
     background-color: #2F2D2D;
     flex: 1;
-    margin: 2rem;
+    margin: 1rem;
     display: flex;
 }
 
@@ -181,3 +181,23 @@ ul {
     height: auto;
     transform: scale(1.1);
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #524f4f; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
