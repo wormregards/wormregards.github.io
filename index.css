@@ -41,6 +41,7 @@ a:hover {
     flex-direction: column;
     padding: 2rem;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .gameContainer {
