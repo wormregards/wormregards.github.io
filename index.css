@@ -56,6 +56,7 @@ a:hover {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .menuContainer li {
@@ -67,7 +68,7 @@ a:hover {
 }
 
 .githubLogo {
-    width: 120px;
+    width: 100px;
 }
 
 #canvas {
@@ -113,8 +114,9 @@ ul {
 }
 
 .logoLink {
-    align-self: center;
-    margin-top: auto!important;
+    align-self: baseline;
+    margin-top: auto !important;
+    margin-left: 8px;
 }
 
 .goals {
