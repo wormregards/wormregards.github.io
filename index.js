@@ -16,7 +16,6 @@ function removeElementById(id) {
 if (currentId) {
     const scriptId = "currentScript";
     if (elementExists(scriptId)) {
-        // remove
         removeElementById(scriptId);
     }
 
@@ -27,3 +26,20 @@ if (currentId) {
     document.body.appendChild(script);
 
 }
+
+let projectTabOpen = {};
+function handleDropDown(id) {
+    if (projectTabOpen[id] === undefined) {
+        projectTabOpen[id] = true; 
+    }
+
+    if (projectTabOpen[id]) {
+       
+        document.getElementById(id).style.display = "none";
+        projectTabOpen[id] = false;
+    } else if (projectTabOpen[id] === false) {
+        document.getElementById(id).style.display = "inherit";
+        projectTabOpen[id] = true;
+    }
+    
+};
