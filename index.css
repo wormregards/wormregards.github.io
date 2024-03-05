@@ -49,6 +49,7 @@ a:hover {
     flex: 1;
     margin: 1rem;
     display: flex;
+    flex-direction: row;
 }
 
 .menuContainer {
@@ -116,8 +117,8 @@ ul {
 
 .logoLink {
     align-self: baseline;
+    margin: 0px;
     margin-top: auto !important;
-    margin-left: 8px;
 }
 
 .goals {
@@ -197,3 +198,60 @@ ul {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+.dashboardContainer {
+    flex: 1;
+    display: flex;
+    width:100%;
+    padding: 4rem;
+    font-size: 2rem;
+    align-content: center;
+  }
+
+.portfolioWelcome {
+    font-size: 1.5rem;
+    
+}
+
+.eyeCatch {
+    font-size: 4rem;
+    font-weight: bold;
+    width: 70%;
+    margin-bottom: 2rem;   
+    margin-top: 1rem;
+}
+
+.portfolioBody {
+    font-size: 1.5rem;
+    width: 80%;
+    color: #dcd4d4;
+}
+
+ .portfolioHighlight {
+    margin-top: 4rem;
+    width: 234px;
+    height: 48px;
+    font-size: 20px;
+    border-style: none;
+    cursor: pointer;
+    color: white;
+    background-color: #524f4f;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid;
+    border-width: 2px;
+    border-radius: 6px;
+ }
+
+ .portfolioHighlight:hover {
+    opacity: 0.8;
+ }
+
+ .portfolio {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

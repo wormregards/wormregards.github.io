@@ -50,7 +50,22 @@
     </div>
 
     <div class="gameContainer">
-        <div id="header">    
+        <div class="dashboardContainer" style="display: none;">
+            <div class="portfolio">
+                <p class="portfolioWelcome">
+                    Welcome to my portfolio
+                </p>
+                <p class="eyeCatch">
+                    I build C programs for the web
+                </p>
+                <p class="portfolioBody">
+                    I'm a software developer specializing in website and game development. My pursuit of knowledge drives me to continuously hone my coding and design skills, all with the aim of creating captivating digital experiences that evolve with every project.
+                </p>
+                <a href="/?id=character_select" class="portfolioHighlight">Project Highlight</a>
+            </div>
+            
+        </div>
+        <div id="header" style="display: none;">
             <div class="emscripten" id="status">Downloading...</div>
     
             <div class="emscripten">
@@ -158,10 +173,25 @@
                 //noInitialRun: true
             };
     
+            if (window.location.search == '') {
+                document.getElementById('header').style.display = 'none';
+                document.getElementsByClassName('emscripten_border')[0].style.display = 'none';
+                document.getElementsByClassName('dashboardContainer')[0].style.display = 'flex';
+                // show dashboard
+            } else {
+                // document.getElementById('header').style.display = 'inherit';
+                // document.getElementsByClassName('emscripten_border').style.display = 'inherit';
+                document.getElementsByClassName('dashboardContainer')[0].style.display = 'none'; 
+                // hide dashboard
+            }
+
             if (window.location.pathname === '/') {
-                Module.setStatus('Please select a game from the navigation menu');
+                // here
+                Module.setStatus(' ');
+                
             } else {
                 Module.setStatus('Downloading...');
+                
             }
     
             window.onerror = function() {
