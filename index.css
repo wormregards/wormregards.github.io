@@ -8,7 +8,7 @@ html, body {
     flex-direction: row;
     color: white;
     font-family: "Fira Mono", monospace;
-    min-width: 500px;   
+
 }
 
 * {
@@ -35,7 +35,7 @@ a:hover {
     width: 250px;
     background-color: #171717;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     box-sizing: border-box;
     font-size: 20px;
     flex-direction: column;
@@ -50,6 +50,7 @@ a:hover {
     margin: 1rem;
     display: flex;
     flex-direction: row;
+    overflow: auto;
 }
 
 .menuContainer {
@@ -243,6 +244,7 @@ ul {
     border: solid;
     border-width: 2px;
     border-radius: 6px;
+    margin-bottom: 2rem;
  }
 
  .portfolioHighlight:hover {
@@ -250,8 +252,9 @@ ul {
  }
 
  .portfolio {
-    overflow-y: auto;
+    /* overflow-y: auto; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin: auto;
+    /* justify-content: center; */
 }
