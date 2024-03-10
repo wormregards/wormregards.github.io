@@ -118,7 +118,7 @@ ul {
 }
 
 .logoLink {
-    /* margin-bottom: 6px; */
+    margin-bottom: 4px;
 }
 
 .goals {
@@ -256,4 +256,27 @@ ul {
     flex-direction: column;
     margin: auto;
     /* justify-content: center; */
+}
+
+.errorContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.error {
+    color: white;
+    background-color: #5d5dba;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-top: 14px;
+    border-radius: 4px;
+}
+
+.errorMessage {
+    font-size: 20px;
 }
