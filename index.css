@@ -117,15 +117,13 @@ ul {
 }
 
 .logoLink {
-    align-self: baseline;
-    margin: 0px;
-    margin-top: auto !important;
+    /* margin-left: 7px; */
 }
 
 .goals {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .goalsHeader {
     font-weight: bold;
