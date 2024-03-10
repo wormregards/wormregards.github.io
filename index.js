@@ -25,6 +25,10 @@ if (currentId) {
     script.id = scriptId;
     document.body.appendChild(script);
 
+    script.onerror = function() {
+        window.location.href = '/404'
+    };
+
 }
 
 let projectTabOpen = {};
