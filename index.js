@@ -1,8 +1,7 @@
 const url = window.location?.search.split("=");
 const currentId = url[1];
 const path = `./${currentId}/index.js`;
-
-function elementExists(id) {
+ function elementExists(id) {
     return document.getElementById(id) !== null;
 }
 
